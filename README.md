@@ -1,4 +1,6 @@
-# VectorShift Frontend Technical Assessment
+# Vector-Shift
+
+VectorShift Pipeline Builder - A React Flow based pipeline builder with simulated LLM and backend integration.
 
 ## Setup
 
