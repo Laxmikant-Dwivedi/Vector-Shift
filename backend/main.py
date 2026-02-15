@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 from pathlib import Path
+import os
+
 # Load .env from backend directory
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
@@ -10,9 +12,21 @@ from typing import List, Dict, Any
 
 app = FastAPI()
 
+# CORS: use ALLOWED_ORIGINS env var in production, or localhost for dev
+_origins = os.environ.get("ALLOWED_ORIGINS")
+if _origins:
+    origins = [x.strip() for x in _origins.split(",") if x.strip()]
+else:
+    origins = [
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:3000", "http://127.0.0.1:3001"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

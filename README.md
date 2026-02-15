@@ -47,3 +47,7 @@ The frontend runs on http://localhost:3000 and proxies API requests to the backe
 ### Run Pipeline (LLM Execution)
 - **Run Pipeline** button executes Input → LLM → Output and shows the LLM response in the Output node.
 - Requires `OPENAI_API_KEY` environment variable. Uses `gpt-4o-mini` by default.
+
+## Deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for deploying to Render (or other platforms). The app uses a React frontend and FastAPI backend; both can be hosted on Render's free tier.
